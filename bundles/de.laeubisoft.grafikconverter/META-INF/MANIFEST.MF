@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Grafikconverter
+Bundle-SymbolicName: de.laeubisoft.grafikconverter
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: de.laeubisoft.grafikconverter;version="1.0.0",
+ de.laeubisoft.grafikconverter.bytewriter;version="1.0.0";uses:="de.laeubisoft.grafikconverter,de.laeubisoft.grafikconverter.palette",
+ de.laeubisoft.grafikconverter.ditheringalgorithm;version="1.0.0";uses:="de.laeubisoft.grafikconverter,de.laeubisoft.grafikconverter.palette",
+ de.laeubisoft.grafikconverter.imagewriter;version="1.0.0";uses:="de.laeubisoft.grafikconverter,de.laeubisoft.grafikconverter.palette",
+ de.laeubisoft.grafikconverter.palette;version="1.0.0";uses:="de.laeubisoft.grafikconverter",
+ de.laeubisoft.grafikconverter.quantization;version="1.0.0",
+ de.laeubisoft.grafikconverter.transform;version="1.0.0";uses:="de.laeubisoft.grafikconverter"
