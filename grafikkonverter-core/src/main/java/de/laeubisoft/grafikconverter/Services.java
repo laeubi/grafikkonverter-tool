@@ -18,16 +18,25 @@ import java.util.ServiceLoader.Provider;
 import java.util.stream.Stream;
 
 import de.laeubisoft.grafikconverter.bytewriter.ByteWriter;
+import de.laeubisoft.grafikconverter.ditheringalgorithm.DitheringAlgorithm;
 
 /**
- * Allows unified access to items that can be provided by plugins on the classpath
+ * Allows unified access to items that can be provided by plugins on the
+ * classpath
  */
 public class Services {
 
-	private static final ServiceLoader<ByteWriter> byteWriter = ServiceLoader.load(ByteWriter.class, Services.class.getClassLoader());
+    private static final ServiceLoader<ByteWriter> byteWriter = ServiceLoader.load(ByteWriter.class,
+	    Services.class.getClassLoader());
 
-	public static final Stream<ByteWriter> getByteWriter() {
+    private static final ServiceLoader<DitheringAlgorithm> ditheringAlgorithm = ServiceLoader
+	    .load(DitheringAlgorithm.class, Services.class.getClassLoader());
 
-		return byteWriter.stream().map(Provider::get);
-	}
+    public static final Stream<ByteWriter> getByteWriter() {
+	return byteWriter.stream().map(Provider::get);
+    }
+
+    public static Stream<DitheringAlgorithm> getDitheringAlgorithms() {
+	return ditheringAlgorithm.stream().map(Provider::get);
+    }
 }
