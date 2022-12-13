@@ -25,13 +25,13 @@ import de.laeubisoft.grafikconverter.NamedItem;
  */
 public interface ByteWriter extends NamedItem {
 
-    public WriterContext createContext(OutputStream stream) throws IOException;
+    WriterContext createContext(OutputStream stream) throws IOException;
 
-    public boolean supportsNewLine();
+    boolean supportsNewLine();
 
-    public boolean supportsMetadata();
+    boolean supportsMetadata();
 
-    public boolean supportsColorPalette();
+    boolean supportsColorPalette();
 
-    public String[] getPreferedExtensions();
+    String[] getPreferedExtensions();
 }
