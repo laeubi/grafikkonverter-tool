@@ -11,12 +11,14 @@
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
-package de.laeubisoft.grafikconverter.imagewriter;
+package de.laeubisoft.grafikconverter.imagewriter.indexed;
 
 import java.io.IOException;
 import java.io.OutputStream;
 
 import de.laeubisoft.grafikconverter.PixelStream;
+import de.laeubisoft.grafikconverter.imagewriter.ImageWriter;
+import de.laeubisoft.grafikconverter.imagewriter.MetadataOutputStream;
 import de.laeubisoft.grafikconverter.palette.IndexedColorPalette;
 
 public class IndexedBitmapWriter implements ImageWriter {

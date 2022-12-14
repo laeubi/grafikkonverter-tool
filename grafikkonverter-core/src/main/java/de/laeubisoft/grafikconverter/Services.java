@@ -19,6 +19,8 @@ import java.util.stream.Stream;
 
 import de.laeubisoft.grafikconverter.bytewriter.ByteWriter;
 import de.laeubisoft.grafikconverter.ditheringalgorithm.DitheringAlgorithm;
+import de.laeubisoft.grafikconverter.imagewriter.ImageWriter;
+import de.laeubisoft.grafikconverter.imagewriter.imageio.GenericFileFormatWriter;
 
 /**
  * Allows unified access to items that can be provided by plugins on the
@@ -27,6 +29,9 @@ import de.laeubisoft.grafikconverter.ditheringalgorithm.DitheringAlgorithm;
 public class Services {
 
     private static final ServiceLoader<ByteWriter> byteWriter = ServiceLoader.load(ByteWriter.class,
+	    Services.class.getClassLoader());
+
+    private static final ServiceLoader<ImageWriter> imageWriter = ServiceLoader.load(ImageWriter.class,
 	    Services.class.getClassLoader());
 
     private static final ServiceLoader<DitheringAlgorithm> ditheringAlgorithm = ServiceLoader
@@ -39,4 +44,10 @@ public class Services {
     public static Stream<DitheringAlgorithm> getDitheringAlgorithms() {
 	return ditheringAlgorithm.stream().map(Provider::get);
     }
+
+    public static Stream<ImageWriter> getImageWriters() {
+	return Stream.concat(imageWriter.stream().map(Provider::get), GenericFileFormatWriter.writers());
+    }
+
+   
 }

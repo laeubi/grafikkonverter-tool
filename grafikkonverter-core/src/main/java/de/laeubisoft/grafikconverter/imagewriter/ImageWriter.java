@@ -28,10 +28,6 @@ import de.laeubisoft.grafikconverter.PixelStream;
  */
 public interface ImageWriter extends NamedItem {
 
-    public static final String SERVICE_PROPERTY_NAME       = "imagewriter.name";
-    public static final String SERVICE_PROPERTY_EXTENSIONS = "imagewriter.extensions";
-    public static final String SERVICE_PROPERTY_MIMETYPES  = "imagewriter.mimetypes";
-
     /**
      * @return the name of default file extensions
      */
