@@ -21,6 +21,7 @@ import de.laeubisoft.grafikconverter.bytewriter.ByteWriter;
 import de.laeubisoft.grafikconverter.ditheringalgorithm.DitheringAlgorithm;
 import de.laeubisoft.grafikconverter.imagewriter.ImageWriter;
 import de.laeubisoft.grafikconverter.imagewriter.imageio.GenericFileFormatWriter;
+import de.laeubisoft.grafikconverter.quantization.ColorQuantizer;
 
 /**
  * Allows unified access to items that can be provided by plugins on the
@@ -32,6 +33,9 @@ public class Services {
 	    Services.class.getClassLoader());
 
     private static final ServiceLoader<ImageWriter> imageWriter = ServiceLoader.load(ImageWriter.class,
+	    Services.class.getClassLoader());
+
+    private static final ServiceLoader<ColorQuantizer> colorQuantizer = ServiceLoader.load(ColorQuantizer.class,
 	    Services.class.getClassLoader());
 
     private static final ServiceLoader<DitheringAlgorithm> ditheringAlgorithm = ServiceLoader
@@ -47,6 +51,10 @@ public class Services {
 
     public static Stream<ImageWriter> getImageWriters() {
 	return Stream.concat(imageWriter.stream().map(Provider::get), GenericFileFormatWriter.writers());
+    }
+
+    public static Stream<ColorQuantizer> getColorQuantizers() {
+	return colorQuantizer.stream().map(Provider::get);
     }
 
    
