@@ -22,6 +22,7 @@ import de.laeubisoft.grafikconverter.ditheringalgorithm.DitheringAlgorithm;
 import de.laeubisoft.grafikconverter.imagewriter.ImageWriter;
 import de.laeubisoft.grafikconverter.imagewriter.imageio.GenericFileFormatWriter;
 import de.laeubisoft.grafikconverter.quantization.ColorQuantizer;
+import de.laeubisoft.grafikconverter.transform.LinearTransform;
 
 /**
  * Allows unified access to items that can be provided by plugins on the
@@ -36,6 +37,9 @@ public class Services {
 	    Services.class.getClassLoader());
 
     private static final ServiceLoader<ColorQuantizer> colorQuantizer = ServiceLoader.load(ColorQuantizer.class,
+	    Services.class.getClassLoader());
+
+    private static final ServiceLoader<LinearTransform> linearTransform = ServiceLoader.load(LinearTransform.class,
 	    Services.class.getClassLoader());
 
     private static final ServiceLoader<DitheringAlgorithm> ditheringAlgorithm = ServiceLoader
@@ -57,5 +61,8 @@ public class Services {
 	return colorQuantizer.stream().map(Provider::get);
     }
 
+    public static Stream<LinearTransform> getLinearTransforms() {
+	return linearTransform.stream().map(Provider::get);
+    }
    
 }
